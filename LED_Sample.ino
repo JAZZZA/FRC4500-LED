@@ -6,10 +6,10 @@
 
 // in our case we have 3 LEDs per pixel so 240 LEDs
 // equates to 240/3=80 pixels 
-#define NUMPIXELS      80
+#define NUMPIXELS      90
 
 // delay to control speed of the light effect
-#define DELAYVAL       20
+#define DELAYVAL       0.1
 
 
 // construct and configure the pixel array
@@ -44,7 +44,7 @@ void loop() {
   // code illustrates how easy it is to get some good effects
   // with some very simple software ...
 
-  for(int i=0;i<NUMPIXELS;i++){
+ /* for(int i=0;i<NUMPIXELS;i++){
     // pixels.Color takes RBG values
     // from 0,0,0 up to 255,255,255
     pixels.setPixelColor(i, pixels.Color(255,0,0)); // RED
@@ -104,16 +104,30 @@ void loop() {
     delay(DELAYVAL);
   }
   //Fade Code
-for(int i=0; i<NUMPIXELS;i++) {
-  pixels.setPixelColor(i, pixels.Color(255,0,0));
-  pixels.setBrightness(i);
-  pixels.show();
-  delay(DELAYVAL);
+*/for(int i=1; i<NUMPIXELS+1;i++) {
+ pixels.setPixelColor(i/1.01, pixels.Color(237,6,120));
+ pixels.setPixelColor(i+1/1.01, pixels.Color(237,6,120));
+ pixels.setPixelColor(i+2/1.01, pixels.Color(237,6,120));
+ pixels.show();
+ delay(DELAYVAL);
+ pixels.setPixelColor(i/1.01, pixels.Color(0, 0, 255));
+ pixels.show();
+ delay(DELAYVAL+i/10);
 }
-for(int i=255; i>NUMPIXELS;i--) {
+for(int i=1; i<NUMPIXELS+1;i++) {
+ pixels.setPixelColor(i/1.01, pixels.Color(237,6,120));
+ pixels.show();
+ delay(DELAYVAL);
+ pixels.setPixelColor(i/1.01, pixels.Color(0, 0, 0));
+ pixels.show();
+ delay(DELAYVAL+i/10);
+}
+
+/*for(int i=255; i>NUMPIXELS;i--) {
   pixels.setPixelColor(i, pixels.Color(0,255,0));
   pixels.setBrightness(i);
   pixels.show();
   delay(DELAYVAL);
+} 
 }
-}
+*/}
